@@ -1,0 +1,30 @@
+{
+  "name": "restcountriesapi",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuyizerejean/restcountriesApi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tuyizerejean/restcountriesApi/issues"
+  },
+  "homepage": "https://github.com/tuyizerejean/restcountriesApi#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "babel-runtime": "^6.26.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}

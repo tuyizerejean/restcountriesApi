@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class=" flex m-5 bg-blue-400">
+    <div class=" flex m-5">
+        <!-- Search button -->
+        <form class="example" action="#">
+            <input type="text" placeholder="Search country...." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          <!-- select list to choose country depend on region -->
+          <div class="filter">
+            <select class="form-select form-select-lg">
+                <option selected>Filter by Region</option>
+                <option value="America">America</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="Africa">Africa</option>
+            </select> 
+          </div>
+       
+        </div>
+    </div>
+    <!-- Country data display -->
+    <div class="flex">
+    <div class="max-w-md rounded overflow-hidden shadow-lg m-5">
+        <img class="w-full" src="/images/rwandaFlag.png" alt="Sunset in the mountains">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">Country Name</div>
+          <p>Population:</p>  
+          <p>Region:</p> 
+          <p>Capital:</p> 
+          <p>Currency:</p> 
+          <p>Mian language:</p> 
+        </div>
+      </div>
+      <div class="max-w-md rounded overflow-hidden shadow-lg m-5">
+        <img class="w-full" src="/images/Flag_of_Uganda.svg.png" alt="Sunset in the mountains">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">Country Name</div>
+          <p>Population:</p>  
+          <p>Region:</p> 
+          <p>Capital:</p> 
+        </div>
+      </div>
+    </div>
+</body>
+</html>

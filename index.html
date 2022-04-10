@@ -7,17 +7,23 @@
     <title>countries Acces infos</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+   
     <!-- Load icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class=" flex m-5 bg-blue-400">
+    <div class=" flex m-5 bg-blue-400" id="header">
     <div class=" flex m-5">
         <!-- Search button -->
-        <form class="example" action="#">
-            <input type="text" placeholder="Search country...." name="search">
+        <form class="example" action="" id="form">
+            <input type="text" placeholder="Search country...." name="search" id="countrysearch">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
+
+
+
+         
+
           <!-- select list to choose country depend on region -->
           <div class="filter">
             <select class="form-select form-select-lg">
@@ -28,12 +34,11 @@
                 <option value="Africa">Africa</option>
             </select> 
           </div>
-       
         </div>
     </div>
     <!-- Country data display -->
-    <section class="flex" id="card-container">
-    <div class="max-w-md rounded overflow-hidden shadow-lg m-5 " id="country-card">
+    <section class=" m-5 grid grid-cols-4" id="card-container">
+    <!-- <div class="max-w-md rounded overflow-hidden shadow-lg m-5 " id="country-card">
         <img class="w-full" src="/images/rwandaFlag.png" alt="Sunset in the mountains">
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2">Country Name</div>
@@ -49,7 +54,7 @@
           <p>Currency:</p> 
           <p>Mian language:</p> 
         </div>
-      </div>
+      </div> -->
     </section>
       <!-- <div class="max-w-md rounded overflow-hidden shadow-lg m-5">
         <img class="w-full" src="/images/Flag_of_Uganda.svg.png" alt="Sunset in the mountains">

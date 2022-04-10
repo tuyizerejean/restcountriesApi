@@ -2,13 +2,13 @@
 import axios from 'axios';
 axios.get('https://restcountries.com/v2/all').then(resp => {
  const  data=resp.data
- console.log(data)
+//  console.log(data)
 data.forEach(function(data) {
-  console.log(data)
+  // console.log(data)
     const cardContainer= document.getElementById("card-container")
     // cardInfos
     const countryCard=document.createElement("div")
-    countryCard.classList.add("w-64", "rounded", "overflow-hidden", "shadow-lg", "m-5")
+     countryCard.classList.add("w-64", "rounded", "shadow-lg", "m-5")
 // countryImage
     const countryImage=document.createElement("img")
     countryImage.classList.add("w-full")
@@ -37,17 +37,30 @@ data.forEach(function(data) {
 
     const countryMianLanguage=document.createElement("p")
     countryMianLanguage.innerHTML=`Main Language:`
- countryInfos.appendChild(countryDetails)
- countryInfos.appendChild(countryPopulation)
- countryInfos.appendChild(countryRegion)
- countryInfos.appendChild(countryCapital)
- countryInfos.appendChild(countryCurrency)
- countryInfos.appendChild(countryMianLanguage)
+    countryInfos.appendChild(countryDetails)
+    countryInfos.appendChild(countryPopulation)
+    countryInfos.appendChild(countryRegion)
+    countryInfos.appendChild(countryCapital)
+    countryInfos.appendChild(countryCurrency)
+    countryInfos.appendChild(countryMianLanguage)
 
- countryCard.appendChild(countryImage)
- countryCard.appendChild(countryInfos)
- cardContainer.appendChild(countryCard)
+    countryCard.appendChild(countryImage)
+    countryCard.appendChild(countryInfos)
+    cardContainer.appendChild(countryCard)
 
 });
+
+const navBar=document.getElementById("form")
+navBar.addEventListener("submit",function(event){
+  event.preventDefault();
+  const countryTosearch= event.target.elements.countrysearch.value;
+  // console.log(countryTosearch)
+  // console.log(data)
+  const searchCountry=data.filter((data)=>{
+    return data.name===countryTosearch
+  })
+
 })
+})
+
 

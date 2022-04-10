@@ -1926,14 +1926,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import 'regenerator-runtime/runtime';
 _axios.default.get('https://restcountries.com/v2/all').then(function (resp) {
-  var data = resp.data;
-  console.log(data);
+  var data = resp.data; //  console.log(data)
+
   data.forEach(function (data) {
-    console.log(data);
+    // console.log(data)
     var cardContainer = document.getElementById("card-container"); // cardInfos
 
     var countryCard = document.createElement("div");
-    countryCard.classList.add("w-64", "rounded", "overflow-hidden", "shadow-lg", "m-5"); // countryImage
+    countryCard.classList.add("w-64", "rounded", "shadow-lg", "m-5"); // countryImage
 
     var countryImage = document.createElement("img");
     countryImage.classList.add("w-full");
@@ -1966,6 +1966,16 @@ _axios.default.get('https://restcountries.com/v2/all').then(function (resp) {
     countryCard.appendChild(countryInfos);
     cardContainer.appendChild(countryCard);
   });
+  var navBar = document.getElementById("form");
+  navBar.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var countryTosearch = event.target.elements.countrysearch.value; // console.log(countryTosearch)
+    // console.log(data)
+
+    var searchCountry = data.filter(function (data) {
+      return data.name === countryTosearch;
+    });
+  });
 });
 },{"axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -1995,7 +2005,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43539" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35239" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

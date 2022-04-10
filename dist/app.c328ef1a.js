@@ -1975,6 +1975,20 @@ _axios.default.get('https://restcountries.com/v2/all').then(function (resp) {
     var searchCountry = data.filter(function (data) {
       return data.name === countryTosearch;
     });
+    console.log(searchCountry);
+  }); //  selection by region
+
+  var regionFilter = document.getElementById("region");
+  console.log(regionFilter);
+  regionFilter.addEventListener("click", function (event) {
+    event.preventDefault();
+    var option = regionFilter.selectedIndex;
+    var selectedRegion = regionFilter.options[option].text;
+    console.log(regionFilter.options[option].text);
+    var searchRegion = data.filter(function (data) {
+      return data.region === selectedRegion;
+    });
+    console.log(searchRegion);
   });
 });
 },{"axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

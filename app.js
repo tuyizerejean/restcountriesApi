@@ -59,7 +59,20 @@ navBar.addEventListener("submit",function(event){
   const searchCountry=data.filter((data)=>{
     return data.name===countryTosearch
   })
-
+  console.log(searchCountry)
+})
+//  selection by region
+const regionFilter=document.getElementById("region")
+console.log(regionFilter)
+regionFilter.addEventListener("click",function(event){
+  event.preventDefault();
+  const option= regionFilter.selectedIndex
+  const selectedRegion=regionFilter.options[option].text
+  console.log(regionFilter.options[option].text)
+  const searchRegion=data.filter((data)=>{
+    return data.region===selectedRegion
+  })
+console.log(searchRegion)
 })
 })
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>countries Acces infos</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <!-- Load icon library -->
@@ -32,19 +32,26 @@
         </div>
     </div>
     <!-- Country data display -->
-    <div class="flex">
-    <div class="max-w-md rounded overflow-hidden shadow-lg m-5">
+    <section class="flex" id="card-container">
+    <div class="max-w-md rounded overflow-hidden shadow-lg m-5 " id="country-card">
         <img class="w-full" src="/images/rwandaFlag.png" alt="Sunset in the mountains">
-        <div class="px-6 py-4" id="country">
+        <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2">Country Name</div>
-          <p>Population:</p>  
+
+          <section  class="check">
+          <div>
+            <p >Population:</p>
+          </div>
+          </section>
+          
           <p>Region:</p> 
           <p>Capital:</p> 
           <p>Currency:</p> 
           <p>Mian language:</p> 
         </div>
       </div>
-      <div class="max-w-md rounded overflow-hidden shadow-lg m-5">
+    </section>
+      <!-- <div class="max-w-md rounded overflow-hidden shadow-lg m-5">
         <img class="w-full" src="/images/Flag_of_Uganda.svg.png" alt="Sunset in the mountains">
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2">Country Name</div>
@@ -52,8 +59,8 @@
           <p>Region:</p> 
           <p>Capital:</p> 
         </div>
-      </div>
-    </div>
+      </div> -->
+   
     <script type="module" src="/app.js"></script>
 </body>
 </html>

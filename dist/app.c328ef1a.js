@@ -1924,75 +1924,52 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function renderCountry(countries) {
+  var mainContainer = document.getElementById("main-card");
+  mainContainer.innerHTML = "";
+  countries.forEach(function (data) {
+    // console.log(data)
+    var cardContainer = document.createElement("div");
+    cardContainer.classList.add("grid", "m-5", "grid-cols-4"); // cardInfos
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+    var countryCard = document.createElement("div");
+    countryCard.classList.add("w-64", "rounded", "shadow-lg", "m-5"); // countryImage
 
-function renderCountry(_x) {
-  return _renderCountry.apply(this, arguments);
+    var countryImage = document.createElement("img");
+    countryImage.classList.add("w-full");
+    countryImage.setAttribute("alt", "Sunset in the mountains");
+    countryImage.setAttribute("src", data.flags.png); // countryInfos
+
+    var countryInfos = document.createElement("div");
+    countryInfos.classList.add("px-6", "py-4"); // country Details
+
+    var countryDetails = document.createElement("div");
+    countryDetails.classList.add("font-bold", "text-xl", "mb-2");
+    countryDetails.innerHTML = data.name.common;
+    var countryPopulation = document.createElement("p");
+    countryPopulation.innerHTML = "<b>Population</b>:".concat(data.population);
+    var countryRegion = document.createElement("p");
+    countryRegion.innerHTML = "<b>Region</b>:".concat(data.region);
+    var countryCapital = document.createElement("p");
+    countryCapital.innerHTML = "<b>Capital</b>:".concat(data.capital);
+    var countryStartWeek = document.createElement("p");
+    countryStartWeek.innerHTML = "<b>Currency</b>:".concat(data.startOfWeek);
+    var countryArea = document.createElement("p");
+    countryArea.innerHTML = "<b>Country Area</b>:".concat(data.area); // appending child Node to parent Node
+
+    countryInfos.appendChild(countryDetails);
+    countryInfos.appendChild(countryPopulation);
+    countryInfos.appendChild(countryRegion);
+    countryInfos.appendChild(countryCapital);
+    countryInfos.appendChild(countryStartWeek);
+    countryInfos.appendChild(countryArea);
+    countryCard.appendChild(countryImage);
+    countryCard.appendChild(countryInfos);
+    cardContainer.appendChild(countryCard);
+    mainContainer.appendChild(cardContainer);
+  });
 } //  Accessing country API using axios
 
-
-function _renderCountry() {
-  _renderCountry = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(countries) {
-    var mainContainer;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            mainContainer = document.getElementById("main-card");
-            mainContainer.innerHTML = "";
-            countries.forEach(function (data) {
-              // console.log(data)
-              var cardContainer = document.createElement("div");
-              cardContainer.classList.add("grid", "m-5", "grid-cols-4"); // cardInfos
-
-              var countryCard = document.createElement("div");
-              countryCard.classList.add("w-64", "rounded", "shadow-lg", "m-5"); // countryImage
-
-              var countryImage = document.createElement("img");
-              countryImage.classList.add("w-full");
-              countryImage.setAttribute("alt", "Sunset in the mountains");
-              countryImage.setAttribute("src", data.flags.png); // countryInfos
-
-              var countryInfos = document.createElement("div");
-              countryInfos.classList.add("px-6", "py-4"); // country Details
-
-              var countryDetails = document.createElement("div");
-              countryDetails.classList.add("font-bold", "text-xl", "mb-2");
-              countryDetails.innerHTML = data.name.common;
-              var countryPopulation = document.createElement("p");
-              countryPopulation.innerHTML = "<b>Population</b>:".concat(data.population);
-              var countryRegion = document.createElement("p");
-              countryRegion.innerHTML = "<b>Region</b>:".concat(data.region);
-              var countryCapital = document.createElement("p");
-              countryCapital.innerHTML = "<b>Capital</b>:".concat(data.capital);
-              var countryStartWeek = document.createElement("p");
-              countryStartWeek.innerHTML = "<b>Currency</b>:".concat(data.startOfWeek);
-              var countryArea = document.createElement("p");
-              countryArea.innerHTML = "<b>Country Area</b>:".concat(data.area); // appending child Node to parent Node
-
-              countryInfos.appendChild(countryDetails);
-              countryInfos.appendChild(countryPopulation);
-              countryInfos.appendChild(countryRegion);
-              countryInfos.appendChild(countryCapital);
-              countryInfos.appendChild(countryStartWeek);
-              countryInfos.appendChild(countryArea);
-              countryCard.appendChild(countryImage);
-              countryCard.appendChild(countryInfos);
-              cardContainer.appendChild(countryCard);
-              mainContainer.appendChild(cardContainer);
-            });
-
-          case 3:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _renderCountry.apply(this, arguments);
-}
 
 _axios.default.get('https://restcountries.com/v3.1/all').then(function (resp) {
   var data = resp.data;

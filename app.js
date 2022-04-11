@@ -1,6 +1,6 @@
 import axios from 'axios';
 
- async function renderCountry(countries){
+function renderCountry(countries){
 const mainContainer=document.getElementById("main-card")
 mainContainer.innerHTML="";
   countries.forEach(function(data) {

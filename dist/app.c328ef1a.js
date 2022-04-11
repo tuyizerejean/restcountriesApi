@@ -1924,72 +1924,107 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import 'regenerator-runtime/runtime';
-_axios.default.get('https://restcountries.com/v2/all').then(function (resp) {
-  var data = resp.data; //  console.log(data)
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-  data.forEach(function (data) {
-    // console.log(data)
-    var cardContainer = document.getElementById("card-container"); // cardInfos
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-    var countryCard = document.createElement("div");
-    countryCard.classList.add("w-64", "rounded", "shadow-lg", "m-5"); // countryImage
+function renderCountry(_x) {
+  return _renderCountry.apply(this, arguments);
+} //  Accessing country API using axios
 
-    var countryImage = document.createElement("img");
-    countryImage.classList.add("w-full");
-    countryImage.setAttribute("alt", "Sunset in the mountains");
-    countryImage.setAttribute("src", data.flags.png); // countryInfos
 
-    var countryInfos = document.createElement("div");
-    countryInfos.classList.add("px-6", "py-4"); // country Details
+function _renderCountry() {
+  _renderCountry = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(countries) {
+    var mainContainer;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            mainContainer = document.getElementById("main-card");
+            mainContainer.innerHTML = "";
+            countries.forEach(function (data) {
+              // console.log(data)
+              var cardContainer = document.createElement("div");
+              cardContainer.classList.add("grid", "m-5", "grid-cols-4"); // cardInfos
 
-    var countryDetails = document.createElement("div");
-    countryDetails.classList.add("font-bold", "text-xl", "mb-2");
-    countryDetails.innerHTML = data.name;
-    var countryPopulation = document.createElement("p");
-    countryPopulation.innerHTML = "Population:";
-    var countryRegion = document.createElement("p");
-    countryRegion.innerHTML = "Region:".concat(data.region);
-    var countryCapital = document.createElement("p");
-    countryCapital.innerHTML = "Capital:".concat(data.region);
-    var countryCurrency = document.createElement("p");
-    countryCurrency.innerHTML = "Currency:".concat(data.region);
-    var countryMianLanguage = document.createElement("p");
-    countryMianLanguage.innerHTML = "Main Language:";
-    countryInfos.appendChild(countryDetails);
-    countryInfos.appendChild(countryPopulation);
-    countryInfos.appendChild(countryRegion);
-    countryInfos.appendChild(countryCapital);
-    countryInfos.appendChild(countryCurrency);
-    countryInfos.appendChild(countryMianLanguage);
-    countryCard.appendChild(countryImage);
-    countryCard.appendChild(countryInfos);
-    cardContainer.appendChild(countryCard);
-  });
-  var navBar = document.getElementById("form");
-  navBar.addEventListener("submit", function (event) {
-    event.preventDefault();
-    var countryTosearch = event.target.elements.countrysearch.value; // console.log(countryTosearch)
-    // console.log(data)
+              var countryCard = document.createElement("div");
+              countryCard.classList.add("w-64", "rounded", "shadow-lg", "m-5"); // countryImage
 
-    var searchCountry = data.filter(function (data) {
-      return data.name === countryTosearch;
+              var countryImage = document.createElement("img");
+              countryImage.classList.add("w-full");
+              countryImage.setAttribute("alt", "Sunset in the mountains");
+              countryImage.setAttribute("src", data.flags.png); // countryInfos
+
+              var countryInfos = document.createElement("div");
+              countryInfos.classList.add("px-6", "py-4"); // country Details
+
+              var countryDetails = document.createElement("div");
+              countryDetails.classList.add("font-bold", "text-xl", "mb-2");
+              countryDetails.innerHTML = data.name.common;
+              var countryPopulation = document.createElement("p");
+              countryPopulation.innerHTML = "<b>Population</b>:".concat(data.population);
+              var countryRegion = document.createElement("p");
+              countryRegion.innerHTML = "<b>Region</b>:".concat(data.region);
+              var countryCapital = document.createElement("p");
+              countryCapital.innerHTML = "<b>Capital</b>:".concat(data.capital);
+              var countryStartWeek = document.createElement("p");
+              countryStartWeek.innerHTML = "<b>Currency</b>:".concat(data.startOfWeek);
+              var countryArea = document.createElement("p");
+              countryArea.innerHTML = "<b>Country Area</b>:".concat(data.area); // appending child Node to parent Node
+
+              countryInfos.appendChild(countryDetails);
+              countryInfos.appendChild(countryPopulation);
+              countryInfos.appendChild(countryRegion);
+              countryInfos.appendChild(countryCapital);
+              countryInfos.appendChild(countryStartWeek);
+              countryInfos.appendChild(countryArea);
+              countryCard.appendChild(countryImage);
+              countryCard.appendChild(countryInfos);
+              cardContainer.appendChild(countryCard);
+              mainContainer.appendChild(cardContainer);
+            });
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _renderCountry.apply(this, arguments);
+}
+
+_axios.default.get('https://restcountries.com/v3.1/all').then(function (resp) {
+  var data = resp.data;
+  renderCountry(data); // listining search button to retrieve country searched
+
+  var search = document.getElementById("form");
+  search.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var searchTerm = e.target.elements.countrysearch.value;
+    var found = data.filter(function (country) {
+      var condition = country.name.common.toLowerCase().includes(searchTerm.toLowerCase());
+      return condition;
     });
-    console.log(searchCountry);
-  }); //  selection by region
+    renderCountry(found);
+  }); // filtering countries information based on Region like asia,amerca,africa ,europ
 
   var regionFilter = document.getElementById("region");
-  console.log(regionFilter);
-  regionFilter.addEventListener("click", function (event) {
-    event.preventDefault();
-    var option = regionFilter.selectedIndex;
-    var selectedRegion = regionFilter.options[option].text;
-    console.log(regionFilter.options[option].text);
-    var searchRegion = data.filter(function (data) {
-      return data.region === selectedRegion;
+  regionFilter.addEventListener("change", function (event) {
+    var found = data.filter(function (country) {
+      var condition = country.region.toLowerCase() === event.target.value.toLowerCase();
+      return condition;
     });
-    console.log(searchRegion);
+
+    if (found.length === 0 || event.target.value === "All") {
+      renderCountry(data);
+    } else {
+      renderCountry(found);
+    }
   });
+}) // displaying message in case server is not respondig
+.catch(function (err) {
+  console.log("Internal server Error");
 });
 },{"axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -2019,7 +2054,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35239" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42227" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

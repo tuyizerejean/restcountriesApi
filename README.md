@@ -9,7 +9,7 @@ Screenshots:
 - Display all the country with the Information
 ![alt text](https://github.com/tuyizerejean/restcountriesApi/blob/main/images/imageCountry.png?raw=true)
 - Displaying the country depending on user search
-![alt text](https://github.com/tuyizerejean/restcountriesApi/blob/main/images/onecountrry.png.png?raw=true)
+![alt text](https://github.com/tuyizerejean/restcountriesApi/blob/main/images/onecountrry.png?raw=true)
 - Displaying the country depending on user filter either by Region it can be Asia,Africa,Europe,Americas
 ![alt text](https://github.com/tuyizerejean/restcountriesApi/blob/main/images/filter.png?raw=true)
 
